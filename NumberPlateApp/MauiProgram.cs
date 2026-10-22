@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using NumberPlateApp.Data.Interfaces;
+using NumberPlateApp.Data.Services;
+using NumberPlateApp.Lib.ViewModels;
 
 namespace NumberPlateApp
 {
@@ -15,8 +18,13 @@ namespace NumberPlateApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<IRepository>(new DatabaseRepository());
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
+            
 #endif
 
             return builder.Build();
