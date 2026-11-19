@@ -24,12 +24,27 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void Add()
     {
-
+        NumberPlateApp.Data.Models.Numberplate n = new();
+        n.Name = this.Name;
+        n.LicensePlate = this.Numberplate;
+        bool result = _repository.Add(n);
+        if (result)
+        {
+            Numberplate = string.Empty;
+            Name = string.Empty;
+            System.Diagnostics.Debug.WriteLine($"Added: {n.Name} - {n.LicensePlate}");
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to add: {n.Name} - {n.LicensePlate}");
+        }
     }
 
     [RelayCommand]
     private void load()
     {
+        System.Diagnostics.Debug.WriteLine("MainViewModel loading....");
 
+        _repository.Load();
     }
 }

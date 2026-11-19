@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="NumberPlateApp.BL/NumberPlateApp.BL.csproj" Id="ec03b015-0b5d-43a8-a432-1b80b63b059a" />
   <Project Path="NumberPlateApp.Data/NumberPlateApp.Data.csproj" Id="449bd4c9-1cbf-4492-9b4e-4edacf5c2461" />
   <Project Path="NumberPlateApp.Lib/NumberPlateApp.Lib.csproj" Id="99bfae34-6bf5-48ee-bc5e-615b48e84845" />
   <Project Path="NumberPlateApp/NumberPlateApp.csproj" />

@@ -2,14 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:NumberPlateApp.Lib.ViewModels;assembly=NumberPlateApp.Lib"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodels:MainViewModel"
-             x:Class="NumberPlateApp.MainPage">
-    
-    
+             x:Class="NumberPlateApp.MainPage"
+             >
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            BindingContext="{Binding Path=BindingContext, Source={x:Reference MainGrid}}"
+            Command="{Binding loadCommand}" />
+    </ContentPage.Behaviors>
+
 
     <Grid RowDefinitions="Auto, Auto, Auto"
           RowSpacing="10"
-          Margin="15">
+          Margin="15"
+          x:Name="MainGrid">
         <StackLayout>
             <Label Margin="0,0,0,3" Text="Name" FontAttributes="Bold"/>
             <Entry Placeholder="Name eingeben" Text="{Binding Name}"/>
@@ -18,7 +27,7 @@
             <Label Margin="0,0,0,3" Text="Kennzeichen" FontAttributes="Bold"/>
             <Entry Placeholder="Kennzeichen eingeben" Text="{Binding Numberplate}"/>
         </StackLayout>
-        <Button Text="Hinzufügen" Grid.Row="2"/>
+        <Button Text="Hinzufügen" Grid.Row="2" Command="{Binding AddCommand}"/>
     </Grid>
     
 </ContentPage>
